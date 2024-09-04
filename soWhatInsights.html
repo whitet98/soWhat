@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insight Popup</title>
+    
+      <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./config/jquery-1.11.1.min.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+    <!-- Extensions Library -->
+    <script src="../lib/tableau.extensions.1.latest.js"></script>
+    
+    <!-- Extension's code -->
+    <script src="./soWhatInsights.js"></script>
+    <script src="./global.js"></script>
+    <link rel="stylesheet" href="./soWhat.css">
+  </head>
+  <body>
+    <div id="insights-container" class="container">
+      <div id="fixed-heading" class="fixed-container fixed-container-top">
+        <h1>Insights</h1>
+        <hr class="custom-hr">
+      </div>
+      
+      <div id="summaryContent">
+      </div>
+      <div id="loadingMessage" class="loading-message">
+        <p>Loading...</p>
+        <div class="loading-icon"></div>
+      </div>
+      
+
+      <div id="gptContainer" class="scrollable-content">
+
+      </div>
+      <form id="queryForm" action="/submit-url" method="post">
+        <div id="userInputContainer" class="fixed-container fixed-container-bottom">
+          <input type="text" id="userQuery" class="form-control" placeholder="Ask a question..." />
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>  
+    </div>
+  </body>
+  </html>

@@ -1,0 +1,289 @@
+@font-face {
+    font-family: 'APTypeProDisplayBold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./config/APTypeProDisplay-Bold.woff2') format('woff');
+}
+
+@font-face {
+    font-family: 'APTypeProDisplayMedium';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./config/APTypeProDisplay-Medium.woff2') format('woff');
+}
+
+@font-face {
+    font-family: 'APTypeProDisplayLight';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./config/APTypeProDisplay-Light.woff2') format('woff');
+}
+
+.btn {
+    font-family: 'APTypeProDisplayMedium';
+    font-size: 14px;
+    min-width: 100px;
+    min-height: 30px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+:root {
+    --theme-colour: rgb(0, 123, 255); /* Default theme color */
+    --theme-colour-rgbA: rgba(0, 123, 255, 0.7);
+    --theme-colour-rgbB: rgba(0, 123, 255, 0.2);
+    --theme-text-colour: white;
+    --secondary-colour: rgb(248, 249, 250);
+}
+
+.btn-primary {
+    background-color: var(--theme-colour);
+    color: var(--theme-text-colour);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--theme-colour-rgbA);
+    color: var(--theme-text-colour);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: var(--theme-text-colour);
+    color: var(--theme-colour);
+    border: 2px solid var(--theme-colour);
+}
+
+.btn-secondary:hover {
+    background-color: var(--theme-colour-rgbB);
+    color: var(--theme-colour);
+    border: 2px solid var(--theme-colour);
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'APTypeProDisplayLight';
+    font-size: 10px;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+
+#insights-container {
+    padding-top:75px;
+}
+
+.container h1,
+.container h2,
+.loading-message {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'APTypeProDisplayBold';
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 22px;
+    color: var(--theme-colour); 
+}
+
+.container h2 {
+    font-size: 18px;
+}
+
+.loading-message {
+    font-size: 18px;
+    color: black; 
+}
+
+
+.scrollable-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.form-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px; 
+
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    min-width: 130px;
+    margin-bottom: 0;
+    margin-left: 5px;
+    text-align: left;
+    font-family: 'APTypeProDisplayMedium';
+    font-size: 14px;
+}
+
+.form-group .form-control {
+    flex: 1;
+    color: black;
+}
+
+textarea {
+    font-family: 'APTypeProDisplayLight';
+    font-size: 15px;
+    color: black;
+}
+
+.settingsDropdown {
+    font-family: 'APTypeProDisplayLight';
+    font-size: 15px;
+    color: black;
+    min-height:  20px;
+    flex: 1;
+}
+.settingsTextArea {
+    min-height: 130px;
+}
+
+
+.fixed-container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--secondary-colour);
+}
+
+.fixed-container-top {
+    top: 0;
+    left:0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--secondary-colour); 
+    justify-content: center;
+}
+
+.fixed-container-bottom {
+    bottom: 0;
+    right: 0;
+    margin-left: auto;
+    justify-content: flex-end;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #dee2e6; 
+}
+
+.message {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+.sent-message {
+    background-color: #d1f5d3;
+    align-self: flex-end;
+    margin-left: auto; 
+}
+
+.received-message {
+    background-color: var(--secondary-colour); 
+    align-self: flex-start;
+    margin-right: auto; 
+}
+
+
+.received-message h1, 
+.received-message h2, 
+.received-message h3, 
+.received-message h4, 
+.received-message h5, 
+.received-message h6 {
+    margin: 10px 0;
+    font-family: 'APTypeProDisplay-Medium';
+    font-size: 16px;
+}
+
+
+.received-message strong {
+    font-family: 'APTypeProDisplay-Medium';
+}
+
+
+.received-message ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    list-style-position: outside; /* Ensures the bullet is outside the text area */
+}
+
+.received-message li {
+    margin-bottom: 5px;
+    text-indent: -20px; /* Creates a hanging indent */
+    padding-left: 20px;  /* Aligns the text with the bullet */
+}
+
+#userQuery {
+    width: calc(70%); /* Adjust width as needed */
+    height: 35px; /* Set the height */
+    padding: 5px; /* Add padding inside the input */
+    border: 2px solid #ccc; /* Set border color and style */
+    border-radius: 5px; /* Round the corners of the input */
+    box-sizing: border-box; /* Include padding and border in width/height */
+  }
+
+.custom-hr {
+    width: 95%; /* Sets the width */
+    border: none; /* Removes default border */
+    height: 3px; /* Adjust height if needed */
+    background-color: var(--theme-colour); /* Use the CSS variable for color */
+    margin: 10px auto; /* Center horizontally and add margin */
+    border-radius: 15px; /* Adjust the value to round the edges */
+    }
+
+.loading-icon {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid var(--theme-colour);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    }
+    
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+#fixed-heading {
+    display: flex;          
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+}
+
+#fixed-heading h1 {
+    margin: 0;
+    padding: 0;
+}

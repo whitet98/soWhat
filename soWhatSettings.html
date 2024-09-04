@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Context Settings</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../lib/tableau.extensions.1.latest.js"></script>
+    <script src="./config/jquery-1.11.1.min.js"></script>
+    <script src="./soWhat.js"></script>
+    <script src="./soWhatSettings.js"></script>
+    <script src="./global.js"></script>
+    <link rel="stylesheet" href="./soWhat.css">
+  </head>
+  <body>
+    <div class="container">
+        <div id="fixed-heading" class="fixed-container fixed-container-top">
+            <h1>Insight Configuration</h1>
+          </div>
+        <h2 style="padding-top:45px">Insight Parameters</h2>
+        <div class="scrollable-content">
+            <div class="form-group">
+                <label for="contextInput">Context</label>
+                <textarea id="contextInput" class="settingsTextArea form-control" placeholder="Provide a detailed description of the dataset. Include key metrics, dimensions, and any relevant segmentation.&#10; &#10;For example:&#10;Customer sales data, including metrics on revenue, profit, and profit ratio, segemented by customer demographics, purchase history, and regional distribution."  rows="2"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="audienceInput" >Dashboard Audience</label>
+                <textarea id="audienceInput" class="settingsTextArea form-control" placeholder="Specify who will be using the insights - include their role, responsibilities and any other details that are relevant.&#10; &#10;For example:&#10;Sales Executives who are responsible for making strategic decisions to drive revenue growth and improve profit margins."  rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="audienceGoalInput">Audience Goal</label>
+                <textarea id="audienceGoalInput" class="settingsTextArea form-control" placeholder="Clearly define what the audience aims to achieve with the insights and be specific about the objectives. This helps focus the insights into recommendations that align with the audience’s goals.&#10;For example:&#10;Identify which customers to focus on for targeted sales efforts, relationship building, and resource allocation, and those to spend less time on in order to maximize profit." rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="analysisDepthInput">Depth of Analysis</label>
+                <select id="analysisDepthInput" style="height: 35px;" class="form-control settingsDropdown">
+                    <option value="high-level summary">High-level summary</option>
+                    <option value="detailed, in-depth analysis">Detailed, in-depth analysis</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="outputFormatInput">Output Format</label>
+                <select id="outputFormatInput" style="height: 35px;" class="form-control settingsDropdown">
+                    <option value="bullet points">Bullet points</option>
+                    <option value="full sentences">Full sentences</option>
+                    <option value="a mix of both">A mix of both</option>
+                </select>
+            </div>
+            <hr class="custom-hr">
+            <h2>System Configuration</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="dashboardNameInput">Dashboard Name</label>
+                    <textarea id="dashboardNameInput" placeholder="Customer Revenue/Profit Dashboard" class="form-control" style="width: 300px; height: 25px;" rows="2"></textarea>                  
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="apiKeySelectionInput">API Key</label>
+                    <select id="apiKeySelectionInput" style="min-width: 70px; height: 35px;" class="form-control settingsDropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option> 
+                        <option value="4">4</option> 
+                        <option value="5">5</option>                     
+                    </select>
+                </div>                
+            </div>
+            <hr class="custom-hr">
+            <h2>Display Preferences</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="themeColourInput">Theme Colour</label>
+                    <textarea id="themeColourInput" class="form-control" style="width: 300px; height: 25px;" minlength="7" maxlength="13" rows="2">0, 123, 255</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="textColourInput">Text Colour</label>
+                    <select id="textColourInput" style="min-width: 70px; height: 35px;" class="form-control settingsDropdown">
+                        <option value="White">White</option>
+                        <option value="Black">Black</option>                    
+                    </select>
+                </div>
+
+            </div>
+
+        <div class="fixed-container fixed-container-bottom">
+            <button id="cancelBtn" class="btn btn-secondary">Close</button>
+            <button id="saveBtn" class="btn btn-primary">Save</button>
+        </div>
+
+    </div>
+    
+  </body>
+
+</html>
