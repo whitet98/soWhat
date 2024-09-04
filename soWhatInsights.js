@@ -19,7 +19,7 @@
   
   function initializeDialog() {
     showLoading();
-    tableau.extensions.initializeDialogAsync().then((openPayload) => {
+    tableau.extensions.initializeDialogAsync().then(() => {
       applySavedSettings(); // Apply saved theme and text colors
       const sheetNames = getSheetNames();
       getFilteredMarks(sheetNames).then(filteredMarks => {
