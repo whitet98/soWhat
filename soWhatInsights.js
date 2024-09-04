@@ -89,10 +89,10 @@
   const max_tokens = 1000;
   const temperature = 0.5;
   const systemPrompt = "You are an expert data analyst.";
-  const userPrompt = `Analyze the following dataset and provide insights. Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
+
   
   async function sendInitialRequestToGPT(filteredMarks) {
-
+    const userPrompt = `Analyze the following dataset and provide insights. Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
 
     conversationHistory = [
       { "role": "system", "content": systemPrompt },
