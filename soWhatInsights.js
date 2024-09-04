@@ -88,11 +88,44 @@
   const model = "gpt-4o-mini";
   const max_tokens = 1000;
   const temperature = 0.5;
-  const systemPrompt = "You are an expert data analyst.";
 
   
   async function sendInitialRequestToGPT(filteredMarks) {
-    const userPrompt = `Analyze the following dataset and provide insights. Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
+    const savedContext = tableau.extensions.settings.get('context');
+    const savedAudience = tableau.extensions.settings.get('audience');
+    const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
+    const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
+    
+const userPrompt = `
+    Analyze the following dataset and provide insights that are relevant to ${savedAudience}. 
+    The dataset is focused on ${savedContext}. 
+    Consider any trends, patterns, or anomalies that may be of interest to ${savedAudience}. 
+    Provide actionable recommendations based on the analysis. 
+    
+                        Dataset Details:
+                        - Context: ${savedContext}
+                        - Audience: ${savedAudience} 
+                        - Specific Metrics/Dimensions of Interest: List any specific metrics, dimensions, or key points the user wants to focus on.
+                        
+                        Insight Requirements:
+                        - Depth of Analysis: Provide a ${savedAnalysisDepth}.
+                        - Output Format: Present the findings in ${savedOutputFormat}.
+                        - Focus on key findings that would be most relevant to ${savedAudience}. 
+                        - Highlight any potential areas of concern or opportunities for improvement. 
+                        - Offer recommendations for next steps or actions based on the analysis.
+                        - If applicable, suggest any additional data that may be useful for more specific actionable recommendations. 
+                        
+                        Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
+
+    const systemPrompt = 
+      `You are an expert data analyst specializing in providing actionable insights based on user-supplied datasets. 
+      Your role is to analyze the data context provided, considering the audience, specific metrics, and other relevant details.
+      Take your time. Focus on delivering insights that are clear, relevant, and actionable. 
+      Tailor your responses to the specified Depth of Analysis and Output Format. 
+      Keep the tone professional and direct but still casual, and conversational and aligned to the needs of the specified audience. 
+      When offering recommendations, be concise but thorough, ensuring that the insights are practical and grounded in the data provided. 
+      Always prioritize clarity, relevance, and utility in your responses.`;
+
 
     conversationHistory = [
       { "role": "system", "content": systemPrompt },
