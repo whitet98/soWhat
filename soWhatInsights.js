@@ -95,25 +95,7 @@
     const max_tokens = 1000;
     const temperature = 0.5;
     const userPrompt = `
-    Analyze the following dataset and provide insights that are relevant to ${savedAudience}. 
-    The dataset is focused on ${savedContext}. 
-    Consider any trends, patterns, or anomalies that may be of interest to ${savedAudience}. 
-    Provide actionable recommendations based on the analysis. 
-    
-                        Dataset Details:
-                        - Context: ${savedContext}
-                        - Audience: ${savedAudience} 
-                        - Specific Metrics/Dimensions of Interest: List any specific metrics, dimensions, or key points the user wants to focus on.
-                        
-                        Insight Requirements:
-                        - Depth of Analysis: Provide a ${savedAnalysisDepth}.
-                        - Output Format: Present the findings in ${savedOutputFormat}.
-                        - Focus on key findings that would be most relevant to ${savedAudience}. 
-                        - Highlight any potential areas of concern or opportunities for improvement. 
-                        - Offer recommendations for next steps or actions based on the analysis.
-                        - If applicable, suggest any additional data that may be useful for more specific actionable recommendations. 
-                        
-                        Here is the filtered data from the Tableau sheets:`;
+This is a test`;
 
     const systemPrompt = 
       `You are an expert data analyst specializing in providing actionable insights based on user-supplied datasets. 
