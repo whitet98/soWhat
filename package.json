@@ -8,8 +8,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "[![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)",
   "dependencies": {
     "node-fetch": "^3.3.2"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
   }
 }
