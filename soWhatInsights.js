@@ -82,13 +82,20 @@
 
     return filteredMarks;
   }
-
+  
+  const savedContext = tableau.extensions.settings.get('context');
+  const savedAudience = tableau.extensions.settings.get('audience');
+  const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
+  const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
+  
+  const model = "gpt-4o-mini";
+  const max_tokens = 1000;
+  const temperature = 0.5;
+  const systemPrompt = "You are an expert data analyst.";
+  const userPrompt = "Analyze the following dataset and provide insights.";
+  
   async function sendInitialRequestToGPT(filteredMarks) {
-    const model = "gpt-4o-mini";
-    const max_tokens = 1000;
-    const temperature = 0.5;
-    const systemPrompt = "You are an expert data analyst.";
-    const userPrompt = "Analyze the following dataset and provide insights.";
+
 
     conversationHistory = [
       { "role": "system", "content": systemPrompt },
