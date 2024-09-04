@@ -84,11 +84,15 @@
   }
 
   async function sendInitialRequestToGPT(filteredMarks) {
-
+    const model = "gpt-4o-mini";
+    const max_tokens = 1000;
+    const temperature = 0.5;
+    const systemPrompt = "You are an expert data analyst.";
+    const userPrompt = "Analyze the following dataset and provide insights.";
 
     conversationHistory = [
-      { "role": "system", "content": "You are an expert data analyst." },
-      { "role": "user", "content": "Analyze the following dataset and provide insights."}
+      { "role": "system", "content": systemPrompt },
+      { "role": "user", "content": userPrompt }
     ];
     
     
@@ -105,10 +109,10 @@
 
   async function sendToGPT() {
     const requestBody = {
-      model: "gpt-4o-mini",
+      model: model,
       messages: conversationHistory, 
-      max_tokens: 1000,
-      temperature: 0.5
+      max_tokens: max_tokens,
+      temperature: temperature
     };
 
     try {
