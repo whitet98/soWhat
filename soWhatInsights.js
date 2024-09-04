@@ -18,9 +18,9 @@
   }
   
   function initializeDialog() {
+    applySavedSettings();  
+    showLoading();
     tableau.extensions.initializeDialogAsync().then(() => {
-      showLoading();
-      applySavedSettings();
       const sheetNames = getSheetNames();
       getFilteredMarks(sheetNames).then(filteredMarks => {
         // Call GPT initially with the context
@@ -113,7 +113,7 @@
                         - Offer recommendations for next steps or actions based on the analysis.
                         - If applicable, suggest any additional data that may be useful for more specific actionable recommendations. 
                         
-                        Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
+                        Here is the filtered data from the Tableau sheets:`;
 
     const systemPrompt = 
       `You are an expert data analyst specializing in providing actionable insights based on user-supplied datasets. 
