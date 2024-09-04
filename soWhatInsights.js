@@ -132,7 +132,7 @@ This is a test`;
     };
 
     try {
-      const response = await fetch('https://sowhatt.netlify.app/.netlify/functions/gpt-api', {
+      const response = await fetch('sowhatt.netlify.app/.netlify/functions/gpt-api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
