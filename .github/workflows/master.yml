@@ -40,6 +40,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
+      - name: Replace API key
+        run: |
+          sed -i 's/APIKEY1/${{ secrets.APIKEY1 }}/g' soWhatInsights.js
+
   # Deployment job
   deploy:
     environment:
