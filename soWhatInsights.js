@@ -18,9 +18,9 @@
   }
   
   function initializeDialog() {
-    showLoading();
     tableau.extensions.initializeDialogAsync().then(() => {
-      applySavedSettings(); // Apply saved theme and text colors
+      showLoading();
+      applySavedSettings();
       const sheetNames = getSheetNames();
       getFilteredMarks(sheetNames).then(filteredMarks => {
         // Call GPT initially with the context
