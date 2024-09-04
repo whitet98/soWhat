@@ -84,27 +84,7 @@
   }
 
   async function sendInitialRequestToGPT(filteredMarks) {
-    const savedContext = tableau.extensions.settings.get('context');
-    const savedAudience = tableau.extensions.settings.get('audience');
-    const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
-    const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
-    
-    const systemPrompt = "You are an expert data analyst.";
-    const userPrompt = "Analyze the following dataset and provide insights.";
-    const model = "gpt-4o-mini";
-    const max_tokens = 1000;
-    const temperature = 0.5;
-    const userPrompt = `
-This is a test`;
 
-    const systemPrompt = 
-      `You are an expert data analyst specializing in providing actionable insights based on user-supplied datasets. 
-      Your role is to analyze the data context provided, considering the audience, specific metrics, and other relevant details.
-      Take your time. Focus on delivering insights that are clear, relevant, and actionable. 
-      Tailor your responses to the specified Depth of Analysis and Output Format. 
-      Keep the tone professional and direct but still casual, and conversational and aligned to the needs of the specified audience. 
-      When offering recommendations, be concise but thorough, ensuring that the insights are practical and grounded in the data provided. 
-      Always prioritize clarity, relevance, and utility in your responses.`;
 
     conversationHistory = [
       { "role": "system", "content": "You are an expert data analyst." },
