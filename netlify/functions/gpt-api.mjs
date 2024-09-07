@@ -1,8 +1,32 @@
 import fetch from 'node-fetch';
 
 export const handler = async (event) => {
-  const apiKey = process.env.GPT_API_KEY;
   const requestBody = JSON.parse(event.body);
+
+  // Simulate fetching 'savedApiKeySelection' from the request body (passed from front-end)
+  const { apiKeySelection } = requestBody;
+
+  // Mapping the API key selection to the respective environment variable
+  const apiKeyMap = {
+    1: process.env.GPT_API_KEY_1,
+    2: process.env.GPT_API_KEY_2,
+    3: process.env.GPT_API_KEY_3,
+    4: process.env.GPT_API_KEY_4,
+    5: process.env.GPT_API_KEY_5,
+  };
+
+  const apiKey = apiKeyMap[apiKeySelection]; // Select the API key
+
+  if (!apiKey) {
+    return {
+      statusCode: 400,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({ error: 'Invalid API key selection' })
+    };
+  }
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -19,7 +43,7 @@ export const handler = async (event) => {
         statusCode: response.status,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*', // Adjust as needed
+          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({ error: 'Error fetching data from GPT API' })
       };
@@ -30,7 +54,7 @@ export const handler = async (event) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(data)
     };
@@ -39,7 +63,7 @@ export const handler = async (event) => {
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({ error: 'Internal server error' })
     };
