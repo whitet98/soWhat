@@ -10,7 +10,7 @@ For example, when presenting a turnover rate of 3%, the extension goes beyond ju
 
 ## How to use it?
 
-1. **Download the Extension**: [Download the .trex file](https://github.com/whitet98/soWhat/blob/master/soWhat.trex) (replace with actual download link).
+1. **Download the Extension**: [Download the .trex file](https://github.com/whitet98/soWhat/blob/master/soWhat.trex)
 2. **Add to Tableau Dashboard**: Add the downloaded .trex file to your Tableau dashboard.
 3. **Configure Settings**: Click the "Configure" option under the dropdown menu and complete the required fields to customize the extension for your needs.
 4. **Publish the Dashboard**: Once configured, publish the dashboard as usual.
