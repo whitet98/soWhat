@@ -63,6 +63,19 @@
     border: 2px solid var(--theme-colour);
 }
 
+.btn-disabled {
+    background-color: #d3d3d3; /* Grey color */
+    color: #a9a9a9; /* Darker grey color */
+    cursor: not-allowed; /* Cancel cursor */
+    border: none;
+}
+
+.btn-disabled:hover {
+    background-color: #d3d3d3;
+    color: #a9a9a9;
+    border: none;
+}
+
 .button-container {
     display: flex;
     justify-content: flex-end;
