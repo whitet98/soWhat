@@ -10,6 +10,7 @@
       configure: configureCallbackFunction
     }).then(function () {
       applySavedSettings();
+      checkSettingsAndUpdateButton();
       // Add event listener to the button
       $('#openModalBtn').click(openSummaryDialog);
     }).catch((error) => {
@@ -65,7 +66,26 @@
         }
       });
   }
+  
+  // Function to check if settings are configured and update button state
+  function checkSettingsAndUpdateButton() {
+    const savedContext = tableau.extensions.settings.get('context');
+    const savedAudience = tableau.extensions.settings.get('audience');
+    const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
+    const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
+    const apiKeySelection = tableau.extensions.settings.get('savedApiKeySelection');
 
+    const isConfigured = savedContext && savedAudience && savedAnalysisDepth && savedOutputFormat && apiKeySelection;
+    const button = $('#openModalBtn');
+
+    if (isConfigured) {
+      button.removeClass('btn-disabled').addClass('btn-primary');
+      button.prop('disabled', false);
+    } else {
+      button.removeClass('btn-primary').addClass('btn-disabled');
+      button.prop('disabled', true);
+    }
+  }
   // Initialize the extension on document ready
   $(document).ready(initializeExtension);
 
