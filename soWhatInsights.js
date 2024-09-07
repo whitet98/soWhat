@@ -95,7 +95,7 @@
     const savedAudience = tableau.extensions.settings.get('audience');
     const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
     const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
-    const apiKeySelection = tableau.extensions.settings.get('savedApiKeySelection');
+    
     
 const userPrompt = `
     Analyze the following dataset and provide insights that are relevant to ${savedAudience}. 
@@ -146,7 +146,7 @@ const userPrompt = `
   }
 
 async function sendToGPT() {
-
+  const apiKeySelection = tableau.extensions.settings.get('savedApiKeySelection');
   const requestBody = {
     model: model,
     messages: conversationHistory,
