@@ -96,7 +96,6 @@
     const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
     const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
     
-    
 const userPrompt = `
     Analyze the following dataset and provide insights that are relevant to ${savedAudience}. 
     The dataset is focused on ${savedContext}. 
@@ -145,38 +144,34 @@ const userPrompt = `
     return await sendToGPT();
   }
 
-async function sendToGPT() {
-  //const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
-  const apiKeySelection = 1 
-  const requestBody = {
-    model: model,
-    messages: conversationHistory,
-    max_tokens: max_tokens,
-    temperature: temperature,
-    apiKeySelection: apiKeySelection // Add the selection to the request body
-  };
+  async function sendToGPT() {
+    const requestBody = {
+      model: model,
+      messages: conversationHistory, 
+      max_tokens: max_tokens,
+      temperature: temperature
+    };
 
-  try {
-    const response = await fetch('https://sowhatt.netlify.app/.netlify/functions/gpt-api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestBody)
-    });
+    try {
+      const response = await fetch('https://sowhatt.netlify.app/.netlify/functions/gpt-api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.choices[0].message.content;
+    } catch (error) {
+      console.error('Error sending request to GPT:', error.message);
+      throw error;
     }
-
-    const data = await response.json();
-    return data.choices[0].message.content;
-  } catch (error) {
-    console.error('Error sending request to GPT:', error.message);
-    throw error;
   }
-}
-
   
 
   function displayGPTResponse(response) {
