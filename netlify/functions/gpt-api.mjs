@@ -16,7 +16,8 @@ export const handler = async (event) => {
       5: process.env.GPT_API_KEY_5,
     };
 
-    const apiKey = apiKeyMap[apiKeySelection];
+    //const apiKey = apiKeyMap[apiKeySelection];
+    const apiKey = process.env.GPT_API_KEY_1;
 
     if (!apiKey) {
       console.error(`Invalid or missing API key for selection ${apiKeySelection}`);
