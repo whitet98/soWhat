@@ -146,7 +146,8 @@ const userPrompt = `
   }
 
 async function sendToGPT() {
-  const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
+  //const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
+  const apiKeySelection = 1 
   const requestBody = {
     model: model,
     messages: conversationHistory,
