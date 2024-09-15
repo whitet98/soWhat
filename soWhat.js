@@ -10,7 +10,7 @@
       configure: configureCallbackFunction
     }).then(function () {
       applySavedSettings();
-      //checkSettingsAndUpdateButton();
+      checkSettingsAndUpdateButton();
       // Add event listener to the button
       $('#openModalBtn').click(openSummaryDialog);
     }).catch((error) => {
@@ -56,6 +56,7 @@
             applyThemeColour(themeColour);
             applyTextColour(textColour);
         }
+        checkSettingsAndUpdateButton();
     })
       
       .catch((error) => {
