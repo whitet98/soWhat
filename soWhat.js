@@ -73,7 +73,7 @@
     const savedAudience = tableau.extensions.settings.get('audience');
     const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
     const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
-    const apiKeySelection = tableau.extensions.settings.get('savedApiKeySelection');
+    const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
 
     const isConfigured = savedContext && savedAudience && savedAnalysisDepth && savedOutputFormat && apiKeySelection;
     const button = $('#openModalBtn');
