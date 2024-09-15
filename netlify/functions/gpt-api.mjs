@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 export const handler = async (event) => {
-  const apiKey = process.env.GPT_API_KEY;
+  const apiKey = process.env.GPT_API_KEY_1;
   const requestBody = JSON.parse(event.body);
 
   try {
