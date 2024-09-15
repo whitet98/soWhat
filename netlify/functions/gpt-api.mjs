@@ -1,8 +1,28 @@
+// back-end
 import fetch from 'node-fetch';
 
+const apiKeys = {
+  1: process.env.GPT_API_KEY_1,
+  2: process.env.GPT_API_KEY_2,
+  3: process.env.GPT_API_KEY_3,
+  4: process.env.GPT_API_KEY_4,
+  5: process.env.GPT_API_KEY_5
+};
+
 export const handler = async (event) => {
-  const apiKey = process.env.GPT_API_KEY_1;
-  const requestBody = JSON.parse(event.body);
+  const { apiKeySelection, ...requestBody } = JSON.parse(event.body);
+  const apiKey = apiKeys[apiKeySelection];
+
+  if (!apiKey) {
+    return {
+      statusCode: 400,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // Adjust as needed
+      },
+      body: JSON.stringify({ error: 'Invalid API key selection' })
+    };
+  }
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
