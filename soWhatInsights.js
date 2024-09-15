@@ -95,8 +95,9 @@
     const savedAudience = tableau.extensions.settings.get('audience');
     const savedAnalysisDepth = tableau.extensions.settings.get('analysisDepth');
     const savedOutputFormat = tableau.extensions.settings.get('outputFormat');
+    const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
     
-const userPrompt = `
+    const userPrompt = `
     Analyze the following dataset and provide insights that are relevant to ${savedAudience}. 
     The dataset is focused on ${savedContext}. 
     Consider any trends, patterns, or anomalies that may be of interest to ${savedAudience}. 
@@ -117,7 +118,7 @@ const userPrompt = `
                         
                         Here is the filtered data from the Tableau sheets:${JSON.stringify(filteredMarks, null, 2)}`;
 
-    const systemPrompt = 
+      const systemPrompt = 
       `You are an expert data analyst specializing in providing actionable insights based on user-supplied datasets. 
       Your role is to analyze the data context provided, considering the audience, specific metrics, and other relevant details.
       Take your time. Focus on delivering insights that are clear, relevant, and actionable. 
@@ -127,29 +128,28 @@ const userPrompt = `
       Always prioritize clarity, relevance, and utility in your responses.`;
 
 
-    conversationHistory = [
-      { "role": "system", "content": systemPrompt },
-      { "role": "user", "content": userPrompt }
+      conversationHistory = [
+        { "role": "system", "content": systemPrompt },
+        { "role": "user", "content": userPrompt }
     ];
     
     
-    return await sendToGPT();
+    return await sendToGPT(apiKeySelection);
   }
 
   async function sendUserQueryToGPT(userQuery) {
-
-    
     conversationHistory.push({ role: 'user', content: userQuery });
-
-    return await sendToGPT();
+    const apiKeySelection = tableau.extensions.settings.get('apiKeySelection');
+    return await sendToGPT(apiKeySelection);
   }
 
-  async function sendToGPT() {
+  async function sendToGPT(apiKeySelection) {
     const requestBody = {
       model: model,
       messages: conversationHistory, 
       max_tokens: max_tokens,
-      temperature: temperature
+      temperature: temperature,
+      apiKeySelection: apiKeySelection
     };
 
     try {
